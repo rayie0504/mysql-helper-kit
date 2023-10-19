@@ -91,8 +91,7 @@ const update = async (
     table: string,
     data = {},
     whereData: any = {},
-    connection: any = defaultCon,
-    queryFlag:boolean = false
+    connection: any = defaultCon
 ) => {
     connection.query = util.promisify(connection.query);
     if (Object.keys(whereData).length === 0 || whereData.constructor !== Object) {
@@ -116,14 +115,7 @@ const update = async (
     `;
 
         const result = await connection.query(query, [data]);
-        if (queryFlag) {
-            const sqlQuery = mysql.format(query, [data]);
-            return {
-                result,
-                query: sqlQuery
-            };
-        }
-        return result;
+        return result
     } catch (error) {
         throw error;
     }
@@ -134,19 +126,11 @@ const create = async (
     table: string,
     data = {},
     connection: any = defaultCon,
-    queryFlag: boolean = false
 ) => {
     connection.query = util.promisify(connection.query);
     try {
         const query = `INSERT INTO ${table} SET ?`;
         const result = await connection.query(query, [data]);
-        if (queryFlag) {
-            const sqlQuery = mysql.format(query, [data]);
-            return {
-                ...result,
-                query: sqlQuery
-            };
-        }
         return result;
     } catch (error) {
         throw error;

@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.initConnection = exports.releaseSingleConnection = exports.getSingleConnection = exports.commitTransaction = exports.rollbackTransaction = exports.startTransaction = exports.execute = exports.create = exports.update = exports.read = exports.createConfiguration = void 0;
+exports.initConnection = exports.releaseSingleConnection = exports.getSingleConnection = exports.commitTransaction = exports.rollbackTransaction = exports.startTransaction = exports.execute = exports.create = exports.update = exports.read = void 0;
 const mysql_1 = __importDefault(require("mysql"));
 const util_1 = __importDefault(require("util"));
 let creds = {
@@ -27,11 +27,6 @@ let creds = {
     acquireTimeout: 50000,
     connectionLimit: 50,
 };
-const createConfiguration = (mysqlCreds) => {
-    creds = Object.assign({}, mysqlCreds);
-    return poolConnection(creds);
-};
-exports.createConfiguration = createConfiguration;
 let con;
 let defaultCon;
 // node native promisify
@@ -88,7 +83,7 @@ const read = (table, columns = "*", whereData = {}, orderBy = false, connection 
 });
 exports.read = read;
 // function for updating the table
-const update = (table, data = {}, whereData = {}, connection = defaultCon, queryFlag = false) => __awaiter(void 0, void 0, void 0, function* () {
+const update = (table, data = {}, whereData = {}, connection = defaultCon) => __awaiter(void 0, void 0, void 0, function* () {
     connection.query = util_1.default.promisify(connection.query);
     if (Object.keys(whereData).length === 0 || whereData.constructor !== Object) {
         throw new Error("Required where clause for updating the table");
@@ -108,13 +103,6 @@ const update = (table, data = {}, whereData = {}, connection = defaultCon, query
             ${whereCondition}
     `;
         const result = yield connection.query(query, [data]);
-        if (queryFlag) {
-            const sqlQuery = mysql_1.default.format(query, [data]);
-            return {
-                result,
-                query: sqlQuery
-            };
-        }
         return result;
     }
     catch (error) {
@@ -123,15 +111,11 @@ const update = (table, data = {}, whereData = {}, connection = defaultCon, query
 });
 exports.update = update;
 // function for inserting records
-const create = (table, data = {}, connection = defaultCon, queryFlag = false) => __awaiter(void 0, void 0, void 0, function* () {
+const create = (table, data = {}, connection = defaultCon) => __awaiter(void 0, void 0, void 0, function* () {
     connection.query = util_1.default.promisify(connection.query);
     try {
         const query = `INSERT INTO ${table} SET ?`;
         const result = yield connection.query(query, [data]);
-        if (queryFlag) {
-            const sqlQuery = mysql_1.default.format(query, [data]);
-            return Object.assign(Object.assign({}, result), { query: sqlQuery });
-        }
         return result;
     }
     catch (error) {
