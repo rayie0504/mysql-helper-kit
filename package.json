@@ -1,6 +1,6 @@
 {
   "name": "mysql-helper-kit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A helper kit for supercharging your MySQL database interactions. This comprehensive Node.js package simplifies and enhances the way you work with MySQL databases, providing a range of powerful utilities to streamline your database operations.",
   "main": "index.js",
   "scripts": {
