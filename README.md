@@ -20,7 +20,7 @@ To get started with "mysql-helper-kit," follow these simple steps:
 1. Import the package into your Node.js application:
 
 ```javascript
-import { createConfiguration, read, update, create, execute, startTransaction, rollbackTransaction, commitTransaction, getSingleConnection, releaseSingleConnection, initConnection } from 'mysql-helper-kit';
+import { read, update, create, execute, startTransaction, rollbackTransaction, commitTransaction, getSingleConnection, releaseSingleConnection, initConnection } from 'mysql-helper-kit';
 ```
 
 2. Configure the package by creating a configuration object:
@@ -35,7 +35,6 @@ const config = {
   // Other optional configuration parameters
 };
 
-createConfiguration(config);
 ```
 
 3. Initialize a connection:
