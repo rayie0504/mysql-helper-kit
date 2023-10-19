@@ -26,11 +26,6 @@ interface MysqlInputs {
   connectionLimit?: number;
 }
 
-const createConfiguration = (mysqlCreds: MysqlInputs) => {
-    creds = { ...mysqlCreds };
-    return poolConnection(creds);
-};
-
 let con: any;
 let defaultCon: any;
 // node native promisify
@@ -206,7 +201,6 @@ const releaseSingleConnection = async (connection: any) => {
 };
 
 export {
-    createConfiguration,
     read,
     update,
     create,

@@ -4,16 +4,41 @@
   "description": "A helper kit for supercharging your MySQL database interactions. This comprehensive Node.js package simplifies and enhances the way you work with MySQL databases, providing a range of powerful utilities to streamline your database operations.",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "mysql-helper",
+    "node-mysql",
+    "database",
+    "mysql-utils",
+    "database-operations",
+    "nodejs-mysql",
+    "mysql-toolkit",
+    "data-access",
+    "database-queries",
+    "query-builder",
+    "database-connector",
+    "mysql-connector",
+    "mysql-queries",
+    "database-utilities",
+    "mysql-connector-nodejs",
+    "mysql-interface",
+    "database-connector-nodejs",
+    "data-manipulation",
+    "database-interactions",
+    "mysql-abstraction"
+  ],
   "author": "Farman Ali",
   "license": "ISC",
   "dependencies": {
-    "mysql": "^2.18.1",
-    "util": "^0.12.5"
+    "mysql": "2.18.1",
+    "util": "0.12.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/mysql": "^2.15.23",
+    "typescript": "^5.2.2"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rayie0504/mysql-helper-kit.git"
