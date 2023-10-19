@@ -1,0 +1,25 @@
+{
+  "name": "mysql-helper-kit",
+  "version": "1.0.0",
+  "description": "A helper kit for supercharging your MySQL database interactions. This comprehensive Node.js package simplifies and enhances the way you work with MySQL databases, providing a range of powerful utilities to streamline your database operations.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Farman Ali",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "util": "^0.12.5"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rayie0504/mysql-helper-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rayie0504/mysql-helper-kit/issues"
+  },
+  "homepage": "https://github.com/rayie0504/mysql-helper-kit#readme"
+}
